@@ -31,13 +31,25 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-function playRound (humanChoice, computerChoice) { 
-    if (humanChoice == computerChoice) { 
+function playRound (humanSelection, computerSelection) { 
+    if (humanSelection == computerSelection) { 
         console.log("It's a tie!");
-    } else if (humanChoice != computerChoice) {
-        console.log("WHat am I DOING");
-        humanScore += humanScore;
+    } else if (humanSelection == "Rock" && computerSelection == "Paper") {
+        computerScore += 1;
+    } else if (humanSelection == "Rock" && computerSelection == "Scissors") {
+        humanScore += 1;
+    } else if (humanSelection == "Paper" && computerSelection == "Rock") {
+        humanScore += 1;
+    } else if (humanSelection == "Paper" && computerSelection == "Scissors") {
+        computerScore += 1;
+    } else if (humanSelection == "Scissors" && computerSelection == "Paper") {
+        humanScore += 1;
+    } else if (humanSelection == "Scissors" && computerSelection == "Rock") {
+        computerScore += 1;
     }
+
+    console.log("Human score: " + humanScore);
+    console.log("Computer score: " + computerScore);
 }
 
 const humanSelection = getHumanChoice();
