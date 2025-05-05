@@ -1,16 +1,39 @@
 
+let humanScore = 0; 
+let computerScore = 0;
 
+var rock = document.createElement("button");
+rock.textContent = "Rock";
 
-humanScore = 0; 
-computerScore = 0;
+var paper = document.createElement("button");
+paper.textContent = "Paper";
 
+var scis = document.createElement("button");
+scis.textContent = "Scissors";
 
+document.body.appendChild(rock);
+document.body.appendChild(paper);
+document.body.appendChild(scis);
 
+rock.addEventListener('click', handle);
+paper.addEventListener('click', handle);
+scis.addEventListener('click', handle);
+
+const results =  document.createElement("div");
+results.classList.add("div");
+results.textContent = "Score: ";
+document.body.appendChild(results);
+
+// Function that takes the button's text content and compares it to the computer's choice
+function handle (event) {
+    let humanChoice = event.target.textContent;
+    let computerChoice = getComputerChoice();
+    playRound(humanChoice, computerChoice);
+};
 
 function getComputerChoice() { 
     const result = Math.floor(Math.random() * 3);
     let computerChoice;
-
     if (result === 0) {
         computerChoice = "Rock";
     } else if (result === 1) { 
@@ -18,17 +41,8 @@ function getComputerChoice() {
     } else if (result === 2) {
         computerChoice = "Scissors";
     }
-
     console.log("Computer: " + computerChoice);
     return computerChoice;
-}
-
-function getHumanChoice() { 
-    user = prompt("Rock, Paper, or Scissors?: ");
-    let humanChoice = user.charAt(0).toUpperCase() + user.slice(1).toLowerCase();
-
-    console.log("User: " + humanChoice);
-    return humanChoice;
 }
 
 function playRound (humanSelection, computerSelection) {
@@ -46,24 +60,15 @@ function playRound (humanSelection, computerSelection) {
         humanScore += 1;
     } else if (humanSelection == "Scissors" && computerSelection == "Rock") {
         computerScore += 1;
-        }
     }
 
-for (let i = 0; i < 5; i++) {
-    console.log("Round " +(i + 1));
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-}
-
-    console.log("Human score: " + humanScore);
-    console.log("Computer score: " + computerScore);
-    console.log("FINAL SCORE\nHuman: " + humanScore, "\nComputer: " + computerScore);
+    results.innerHTML = "Human: " + humanScore + "<br>Computer: " + computerScore;
     
-    if (humanScore > computerScore) {
-        console.log("Congratulations! You win!");
-    } else if (humanScore == computerScore) {
-        console.log("It's a tie!");
-    } else {
-        console.log("Sorry. Try again?");
-    }
+    // Checks if someone has won
+    if (humanScore >= 5) {
+        alert("You win!");
+        return;
+    } else if (computerScore >= 5) {
+        alert("Computer wins. Sorry.");
+    }   return;
+}
