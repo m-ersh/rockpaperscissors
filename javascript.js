@@ -72,3 +72,6 @@ function playRound (humanSelection, computerSelection) {
         alert("Computer wins. Sorry.");
     }   return;
 }
+
+// TO DO: 
+// Change console.logs to DOM and have each round's selections update on screen.
