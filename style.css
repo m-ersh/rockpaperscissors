@@ -1,12 +1,13 @@
 
 
 .results {
+    margin-top: 12px;
     margin-bottom: 12px;
     font-weight: bold;
 }
 
-.rounds {
-    margin-bottom: 55px;
+.round-count, .round {
+    font-weight: bold;
 }
 
 .tied {
