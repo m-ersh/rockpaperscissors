@@ -21,11 +21,11 @@ paper.addEventListener('click', handle);
 scis.addEventListener('click', handle);
 
 const results =  document.createElement("div");
-results.classList.add("div");
+results.classList.add("results");
 document.body.appendChild(results);
 
 const rounds = document.createElement("div");
-rounds.classList.add("div");
+rounds.classList.add("rounds");
 document.body.appendChild(rounds);
 
 // Function that takes the button's text content and compares it to the computer's choice
@@ -45,9 +45,8 @@ function getComputerChoice() {
     } else if (result === 2) {
         computerChoice = "Scissors";
     }
-    console.log("Computer: " + computerChoice);
     return computerChoice;
-}
+};
 
 function playRound (humanSelection, computerSelection) {
     if (humanSelection == computerSelection) { 
@@ -67,7 +66,15 @@ function playRound (humanSelection, computerSelection) {
     } roundCount ++;
 
     results.innerHTML = "Human: " + humanScore + "<br>Computer: " + computerScore + "<br>";
-    rounds.innerHTML += "Round " + roundCount + "<br>Human: " + humanSelection + "<br>Computer: " +computerSelection + "<br>";
+    
+    const roundLog = document.createElement("div");
+    roundLog.classList.add("round-log");
+    roundLog.innerHTML = `
+        Round ${roundCount} <br>
+        Human: ${humanSelection} <br>
+        Computer: ${computerSelection} <br><br>
+        `;
+    rounds.appendChild(roundLog);
 
     // Checks if someone has won
     if (humanScore >= 5) {
@@ -78,7 +85,3 @@ function playRound (humanSelection, computerSelection) {
     }   return; 
 };
 
-
-
-// TO DO: 
-// Change console.logs to DOM and have each round's selections update on screen.
