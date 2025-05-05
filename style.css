@@ -8,3 +8,7 @@
 .rounds {
     margin-bottom: 55px;
 }
+
+.tied {
+    font-weight: bold;
+}

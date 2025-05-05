@@ -49,9 +49,7 @@ function getComputerChoice() {
 };
 
 function playRound (humanSelection, computerSelection) {
-    if (humanSelection == computerSelection) { 
-        console.log("It's a tie!");
-    } else if (humanSelection == "Rock" && computerSelection == "Paper") {
+    if (humanSelection == "Rock" && computerSelection == "Paper") {
         computerScore += 1;
     } else if (humanSelection == "Rock" && computerSelection == "Scissors") {
         humanScore += 1;
@@ -69,14 +67,23 @@ function playRound (humanSelection, computerSelection) {
     
     const roundLog = document.createElement("div");
     roundLog.classList.add("round-log");
+
+    const tied = humanSelection === computerSelection;
+    let tiedText = tied ? `<span class="tied">Tie!</span><br>` : "";
+
+    if (tied) {
+        roundLog.classList.add("tied-text");
+    }
+    
     roundLog.innerHTML = `
         Round ${roundCount} <br>
         Human: ${humanSelection} <br>
-        Computer: ${computerSelection} <br><br>
+        Computer: ${computerSelection} <br>
+        ${tiedText}
+        <br>
         `;
     rounds.appendChild(roundLog);
-
-    // Checks if someone has won
+    
     if (humanScore >= 5) {
         alert("You win!");
         return;
