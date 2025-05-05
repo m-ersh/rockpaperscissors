@@ -76,7 +76,7 @@ function playRound (humanSelection, computerSelection) {
     }
     
     roundLog.innerHTML = `
-        Round ${roundCount} <br>
+        <span class="round">Round </span> <span class="round-count">${roundCount}</span> <br>
         Human: ${humanSelection} <br>
         Computer: ${computerSelection} <br>
         ${tiedText}
