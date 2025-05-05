@@ -1,6 +1,7 @@
 
 let humanScore = 0; 
 let computerScore = 0;
+let roundCount = 0;
 
 var rock = document.createElement("button");
 rock.textContent = "Rock";
@@ -21,8 +22,11 @@ scis.addEventListener('click', handle);
 
 const results =  document.createElement("div");
 results.classList.add("div");
-results.textContent = "Score: ";
 document.body.appendChild(results);
+
+const rounds = document.createElement("div");
+rounds.classList.add("div");
+document.body.appendChild(rounds);
 
 // Function that takes the button's text content and compares it to the computer's choice
 function handle (event) {
@@ -60,18 +64,21 @@ function playRound (humanSelection, computerSelection) {
         humanScore += 1;
     } else if (humanSelection == "Scissors" && computerSelection == "Rock") {
         computerScore += 1;
-    }
+    } roundCount ++;
 
-    results.innerHTML = "Human: " + humanScore + "<br>Computer: " + computerScore;
-    
+    results.innerHTML = "Human: " + humanScore + "<br>Computer: " + computerScore + "<br>";
+    rounds.innerHTML += "Round " + roundCount + "<br>Human: " + humanSelection + "<br>Computer: " +computerSelection + "<br>";
+
     // Checks if someone has won
     if (humanScore >= 5) {
         alert("You win!");
         return;
     } else if (computerScore >= 5) {
         alert("Computer wins. Sorry.");
-    }   return;
-}
+    }   return; 
+};
+
+
 
 // TO DO: 
 // Change console.logs to DOM and have each round's selections update on screen.
